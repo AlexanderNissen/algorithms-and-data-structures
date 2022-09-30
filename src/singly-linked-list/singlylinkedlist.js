@@ -10,14 +10,15 @@ class SinglyLinkedList {
 
 
     push(value) {
-        var node = new Node(value);
-        if (this.head == null) {
-            this.head = this.tail = node;
+        var newNode = new Node(value);
+        if (!this.head) {
+            this.head = this.tail = newNode;
         } else {
-            this.tail.next = node;
-            this.tail = node;
+            this.tail.next = newNode;
+            this.tail = newNode;
         }
-        this.incrementLength();
+        this.length++;
+        return this;
     }
 
 
@@ -26,38 +27,32 @@ class SinglyLinkedList {
             return null;
         }
         
-        var currentNode = this.head;
+        let currentNode = this.head;
+        let newTail = currentNode;
         if (this.length === 1) {
             this.head = this.tail = null;
-            this.decrementLength();
+            this.length--;
             return currentNode;
         }
 
-        if (this.length === 2) {
-            let poppedNode = currentNode.next;
-            currentNode.next = null;
-            this.decrementLength();
-            this.head = this.tail = currentNode;
-            return poppedNode;
-        }
+        // if (this.length === 2) {
+        //     let poppedNode = currentNode.next;
+        //     currentNode.next = null;
+        //     this.decrementLength();
+        //     this.head = this.tail = currentNode;
+        //     return poppedNode;
+        // }
     
-        for (let i = 0; i < (this.length - 2); i++) {
+        while (currentNode.next) {
+            newTail = currentNode;
             currentNode = currentNode.next;
         }
-        let poppedNode = currentNode.next;
-        currentNode.next = null;
-        this.decrementLength();
-        this.tail = currentNode;
-        return poppedNode;
+        newTail.next = null;        
+        this.tail = newTail;
+        this.length--;
+        return currentNode;
     }
 
-    incrementLength() {
-        this.length += 1;
-    }
-
-    decrementLength() {
-        this.length -= 1;
-    }
 
     printAllNodes() {
         var currentNode = this.head;
@@ -88,6 +83,10 @@ sll.printAllNodes();
 sll.pop()
 console.log('After popping another node:');
 sll.printAllNodes
+sll.push('Hello,');
+sll.push('World!');
+console.log('After pushing two nodes:')
+sll.printAllNodes();
 
 
 export default SinglyLinkedList;
