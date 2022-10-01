@@ -10,12 +10,12 @@ class SinglyLinkedList {
 
 
     push(value) {
-        var newNode = new Node(value);
+        var newHead = new Node(value);
         if (!this.head) {
-            this.head = this.tail = newNode;
+            this.head = this.tail = newHead;
         } else {
-            this.tail.next = newNode;
-            this.tail = newNode;
+            this.tail.next = newHead;
+            this.tail = newHead;
         }
         this.length++;
         return this;
@@ -53,6 +53,7 @@ class SinglyLinkedList {
         return currentNode;
     }
 
+// Equivalent to removing the head node
 shift() {
     if (!this.head) {
         return null;
@@ -65,6 +66,18 @@ shift() {
         this.tail = null;
     }
     return oldHead;
+}
+
+// Equivalent to inserting 
+unshift(value) {
+    let newHead = new Node(value);
+    newHead.next = this.head;
+    this.head = newHead;
+    this.length++;
+    if (this.length === 1) {
+        this.tail = this.head;
+    }
+    return this;
 }
 
 
@@ -99,11 +112,15 @@ console.log('After popping another node:');
 sll.printAllNodes
 sll.push('Hello,');
 sll.push('World!');
-console.log('After pushing two nodes:')
+console.log('After pushing two nodes:');
 sll.printAllNodes();
 sll.shift();
 sll.shift();
-console.log('After shifting once:')
+console.log('After shifting twice:');
+sll.printAllNodes();
+sll.unshift('Alex.');
+sll.unshift("I'm")
+console.log('Unshifting twice:')
 sll.printAllNodes();
 
 
