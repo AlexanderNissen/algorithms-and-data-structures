@@ -80,6 +80,17 @@ unshift(value) {
     return this;
 }
 
+get(index) {
+    if (!this.head || index < 0 || this.length < (index + 1)) { // Might want to raise error instead of returning null
+        return null;
+    }
+    let currentNode = this.head;
+    for (let i = 0; i < index; i++) {
+        currentNode = currentNode.next;
+    }
+    return currentNode
+}
+
 
     printAllNodes() {
         var currentNode = this.head;
@@ -122,6 +133,8 @@ sll.unshift('Alex.');
 sll.unshift("I'm")
 console.log('Unshifting twice:')
 sll.printAllNodes();
-
+console.log('Getting nodes:');
+console.log(sll.get(0));
+console.log(sll.get(1));
 
 export default SinglyLinkedList;
