@@ -53,6 +53,20 @@ class SinglyLinkedList {
         return currentNode;
     }
 
+shift() {
+    if (!this.head) {
+        return null;
+    }
+
+    let oldHead = this.head;
+    this.head = this.head.next;
+    this.length--;
+    if (!this.head) {
+        this.tail = null;
+    }
+    return oldHead;
+}
+
 
     printAllNodes() {
         var currentNode = this.head;
@@ -86,6 +100,10 @@ sll.printAllNodes
 sll.push('Hello,');
 sll.push('World!');
 console.log('After pushing two nodes:')
+sll.printAllNodes();
+sll.shift();
+sll.shift();
+console.log('After shifting once:')
 sll.printAllNodes();
 
 
