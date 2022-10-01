@@ -53,43 +53,74 @@ class SinglyLinkedList {
         return currentNode;
     }
 
-// Equivalent to removing the head node
-shift() {
-    if (!this.head) {
-        return null;
+    // Equivalent to removing the head node
+    shift() {
+        if (!this.head) {
+            return null;
+        }
+
+        let oldHead = this.head;
+        this.head = this.head.next;
+        this.length--;
+        if (!this.head) {
+            this.tail = null;
+        }
+        return oldHead;
     }
 
-    let oldHead = this.head;
-    this.head = this.head.next;
-    this.length--;
-    if (!this.head) {
-        this.tail = null;
+    // Equivalent to inserting 
+    unshift(value) {
+        let newHead = new Node(value);
+        newHead.next = this.head;
+        this.head = newHead;
+        this.length++;
+        if (this.length === 1) {
+            this.tail = this.head;
+        }
+        return this;
     }
-    return oldHead;
-}
 
-// Equivalent to inserting 
-unshift(value) {
-    let newHead = new Node(value);
-    newHead.next = this.head;
-    this.head = newHead;
-    this.length++;
-    if (this.length === 1) {
-        this.tail = this.head;
+    get(index) {
+        if (index < 0 || this.length <= index) { // Might want to raise error instead of returning null
+            return null;
+        }
+        let currentNode = this.head;
+        for (let i = 0; i < index; i++) {
+            currentNode = currentNode.next;
+        }
+        return currentNode;
     }
-    return this;
-}
 
-get(index) {
-    if (!this.head || index < 0 || this.length < (index + 1)) { // Might want to raise error instead of returning null
-        return null;
+
+    // Customary to return booleans when setting values on nodes in SLL
+    // set() sets the value, not the entire node
+    set(index, value) {
+        let node = this.get(index);
+        if (node === null) { // either no node was found, or the SLL is of length 0 and can't be updated
+            return false;
+        }
+        node.value = value;
+        return true;
     }
-    let currentNode = this.head;
-    for (let i = 0; i < index; i++) {
-        currentNode = currentNode.next;
+
+    insert(index, value) {
+        if (index < 0 || this.length < index) {
+            return false;
+        }
+        if (index === 0) {
+            this.unshift(value);
+        } else if (index === this.length) {
+            this.push(value);
+        } else {
+            let previousNode = this.get(index - 1);
+            let oldNode = previousNode.next;
+            let newNode = new Node(value);
+            previousNode.next = newNode;
+            newNode.next = oldNode;
+        }
+        this.length++;
+        return true;
     }
-    return currentNode
-}
 
 
     printAllNodes() {
@@ -103,7 +134,6 @@ get(index) {
             }
             currentNode = currentNode.next;
         }
-
         console.log(output);
     }
 }
@@ -136,5 +166,13 @@ sll.printAllNodes();
 console.log('Getting nodes:');
 console.log(sll.get(0));
 console.log(sll.get(1));
+sll.set(1, 'Julie.');
+console.log("After setting the value of the second node to 'Julie'");
+sll.printAllNodes();
+sll.insert(0, 'FIRST');
+sll.insert(sll.length, 'LAST');
+sll.insert(2, 'MIDDLE');
+console.log('After inserting at the front, end and middle of the singly linked list:');
+sll.printAllNodes();
 
 export default SinglyLinkedList;
