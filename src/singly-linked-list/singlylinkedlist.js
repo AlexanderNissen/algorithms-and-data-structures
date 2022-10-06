@@ -122,6 +122,25 @@ class SinglyLinkedList {
         return true;
     }
 
+    remove(index) {
+        if (index < 0 || this.length <= index) {
+            return null;
+        }
+
+        let removedNode;
+        if (index === this.length - 1) {
+            removedNode = this.pop();
+        } else if (index === 0) {
+            removedNode = this.shift();
+        } else {
+            let previousNode = this.get(index - 1);
+            removedNode = previousNode.next;
+            previousNode.next = removedNode.next;
+        }
+        this.length--;
+        return removedNode;
+    }
+
 
     printAllNodes() {
         var currentNode = this.head;
@@ -173,6 +192,10 @@ sll.insert(0, 'FIRST');
 sll.insert(sll.length, 'LAST');
 sll.insert(2, 'MIDDLE');
 console.log('After inserting at the front, end and middle of the singly linked list:');
+sll.printAllNodes();
+sll.remove(2);
+sll.remove(3);
+console.log('After removing middle and last node:');
 sll.printAllNodes();
 
 export default SinglyLinkedList;
