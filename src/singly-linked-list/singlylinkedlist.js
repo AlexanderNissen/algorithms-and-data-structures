@@ -28,7 +28,6 @@ class SinglyLinkedList {
         }
         
         let currentNode = this.head;
-        let newTail = currentNode;
         if (this.length === 1) {
             this.head = this.tail = null;
             this.length--;
@@ -42,7 +41,7 @@ class SinglyLinkedList {
         //     this.head = this.tail = currentNode;
         //     return poppedNode;
         // }
-    
+        let newTail = currentNode;    
         while (currentNode.next) {
             newTail = currentNode;
             currentNode = currentNode.next;
@@ -109,8 +108,10 @@ class SinglyLinkedList {
         }
         if (index === 0) {
             this.unshift(value);
+            return true;
         } else if (index === this.length) {
             this.push(value);
+            return true;
         } else {
             let previousNode = this.get(index - 1);
             let oldNode = previousNode.next;
@@ -136,9 +137,31 @@ class SinglyLinkedList {
             let previousNode = this.get(index - 1);
             removedNode = previousNode.next;
             previousNode.next = removedNode.next;
+            this.length--;
         }
-        this.length--;
         return removedNode;
+    }
+
+    reverse() {
+        if (this.length === 0) {
+            return null;
+        }
+        if (this.length === 1) {
+            return this;
+        }
+        let currentNode = this.head;
+        this.head = this.tail;
+        this.tail = currentNode;
+        let previousNode;
+        let nextNode = currentNode.next;
+        while(nextNode) {
+            previousNode = currentNode
+            currentNode = nextNode;
+            nextNode = nextNode.next;
+            currentNode.next = previousNode;         
+        }
+        this.tail.next = null;
+        return this;
     }
 
 
@@ -153,6 +176,7 @@ class SinglyLinkedList {
             }
             currentNode = currentNode.next;
         }
+        output += `\nLength: ${this.length}`;
         console.log(output);
     }
 }
@@ -196,6 +220,9 @@ sll.printAllNodes();
 sll.remove(2);
 sll.remove(3);
 console.log('After removing middle and last node:');
+sll.printAllNodes();
+sll.reverse();
+console.log('After reversing linked list:');
 sll.printAllNodes();
 
 export default SinglyLinkedList;
