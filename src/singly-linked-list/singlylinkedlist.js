@@ -1,4 +1,4 @@
-import Node from "./Node.js";
+import SingleNode from "./singlenode.js";
 
 class SinglyLinkedList {
     
@@ -10,7 +10,7 @@ class SinglyLinkedList {
 
 
     push(value) {
-        var newHead = new Node(value);
+        var newHead = new SingleNode(value);
         if (!this.head) {
             this.head = this.tail = newHead;
         } else {
@@ -69,7 +69,7 @@ class SinglyLinkedList {
 
     // Equivalent to inserting 
     unshift(value) {
-        let newHead = new Node(value);
+        let newHead = new SingleNode(value);
         newHead.next = this.head;
         this.head = newHead;
         this.length++;
@@ -115,7 +115,7 @@ class SinglyLinkedList {
         } else {
             let previousNode = this.get(index - 1);
             let oldNode = previousNode.next;
-            let newNode = new Node(value);
+            let newNode = new SingleNode(value);
             previousNode.next = newNode;
             newNode.next = oldNode;
         }
