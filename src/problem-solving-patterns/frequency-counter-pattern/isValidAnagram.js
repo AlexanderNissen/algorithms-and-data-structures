@@ -29,6 +29,7 @@ function characterFrequencyOf(string) {
     return frequencyCounter;
 }
 
+// TODO: Export to test cases
 console.log(
     isValidAnagram('', ''),
     isValidAnagram('rat', 'car'),
