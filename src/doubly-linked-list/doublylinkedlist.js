@@ -48,12 +48,11 @@ class DoublyLinkedList {
         let newHead = this.head.next;
         this.head = newHead;
         if (!this.head) {
-            this.length--;
             this.tail = this.head;
-            return oldHead;
+        } else {
+            oldHead.next = null;
+            newHead.previous = null;
         }
-        oldHead.next = null;
-        newHead.previous = null;
         this.length--;
         return oldHead;
     }
