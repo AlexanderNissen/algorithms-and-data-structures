@@ -57,6 +57,20 @@ class DoublyLinkedList {
         return oldHead;
     }
 
+    unshift(value) {
+        let newHead = new DoubleNode(value);
+        if (this.length == 0) {
+            this.head = this.tail = newHead;
+        } else {
+            let oldHead = this.head;
+            newHead.next = oldHead;
+            oldHead.previous = newHead;
+            this.head = newHead;
+        }
+        this.length++;
+        return this;
+    }
+
 
     printAllNodes() {
         let currentNode = this.head;
@@ -90,6 +104,10 @@ dll.printAllNodes();
 dll.shift();
 dll.shift();
 console.log('Shifting twice:');
+dll.printAllNodes();
+dll.unshift('Second');
+dll.unshift('First');
+console.log('Unshifting the shifted nodes:');
 dll.printAllNodes();
 
 
