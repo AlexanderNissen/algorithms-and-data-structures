@@ -72,6 +72,28 @@ class DoublyLinkedList {
     }
 
 
+    get(index) {
+        if (0 <= index && index <= (this.length/2 - 1)) {
+            let counter = 0;
+            var currentNode = this.head;
+            while(counter != index) {
+                currentNode = currentNode.next;
+                counter++;
+            }
+        } else if (index < this.length) {
+            let counter = this.length - 1;
+            var currentNode = this.tail;
+            while (counter != index) {
+                currentNode = currentNode.previous;
+                counter--;
+            }
+        } else {
+            return null;
+        }
+        return currentNode;
+    }
+
+
     printAllNodes() {
         let currentNode = this.head;
         let message = currentNode.value;
@@ -109,6 +131,9 @@ dll.unshift('Second');
 dll.unshift('First');
 console.log('Unshifting the shifted nodes:');
 dll.printAllNodes();
+console.log('Getting first node: ' + dll.get(0).value);
+console.log('Getting second node: ' + dll.get(1).value);
+console.log('Getting third node: ' + dll.get(2).value);
 
 
 export default DoublyLinkedList;
