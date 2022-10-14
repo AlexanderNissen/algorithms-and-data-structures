@@ -94,6 +94,16 @@ class DoublyLinkedList {
     }
 
 
+    set(index, value) {
+        let node = this.get(index);
+        if (node) {
+            node.value = value;
+            return true;
+        }
+        return false;
+    }
+
+
     printAllNodes() {
         let currentNode = this.head;
         let message = currentNode.value;
@@ -134,6 +144,11 @@ dll.printAllNodes();
 console.log('Getting first node: ' + dll.get(0).value);
 console.log('Getting second node: ' + dll.get(1).value);
 console.log('Getting third node: ' + dll.get(2).value);
+console.log('Setting value of all three nodes:')
+dll.set(0, 'A');
+dll.set(1, 'B');
+dll.set(2, 'C');
+dll.printAllNodes();
 
 
 export default DoublyLinkedList;
