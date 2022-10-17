@@ -104,6 +104,28 @@ class DoublyLinkedList {
     }
 
 
+    insert(index, value) {
+        if (index < 0 || this.length <= index) {
+            return false;
+        }
+        if (index == 0) {
+            this.unshift(value);
+        } else if (index == this.length - 1) {
+            this.push(value);
+        } else {
+            let previousNode = this.get(index - 1);
+            let oldNode = this.get(index);
+            let newNode = new DoubleNode(value);
+            previousNode.next = newNode;
+            oldNode.previous = newNode;
+            newNode.previous = previousNode;
+            newNode.next = oldNode;
+            this.length++;
+        }
+        return true;
+    }
+
+
     printAllNodes() {
         let currentNode = this.head;
         let message = currentNode.value;
@@ -145,9 +167,14 @@ console.log('Getting first node: ' + dll.get(0).value);
 console.log('Getting second node: ' + dll.get(1).value);
 console.log('Getting third node: ' + dll.get(2).value);
 console.log('Setting value of all three nodes:')
-dll.set(0, 'A');
-dll.set(1, 'B');
-dll.set(2, 'C');
+dll.set(0, 'B');
+dll.set(1, 'D');
+dll.set(2, 'E');
+dll.printAllNodes();
+console.log('Inserting nodes with values A, C, F, respectively:');
+dll.insert(0, 'A');
+dll.insert(2, 'C');
+dll.insert(dll.length - 1, 'F');
 dll.printAllNodes();
 
 
