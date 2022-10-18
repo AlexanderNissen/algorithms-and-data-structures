@@ -126,6 +126,28 @@ class DoublyLinkedList {
     }
 
 
+    remove(index) {
+        if (index < 0 || this.length <= index) {
+            return null;
+        }
+        
+        if (index == 0) {
+            var removedNode = this.shift();
+        } else if (index == this.length - 1) {
+            var removedNode = this.pop();
+        } else {
+            let previousNode = this.get(index - 1);
+            let removedNode = previousNode.next;
+            let nextNode = removedNode.next;
+            previousNode.next = nextNode;
+            nextNode.previous = previousNode;
+            removedNode.next = removedNode.previous = null;
+            this.length--;
+        }
+        return removedNode;
+    }
+
+
     printAllNodes() {
         let currentNode = this.head;
         let message = currentNode.value;
@@ -176,6 +198,13 @@ dll.insert(0, 'A');
 dll.insert(2, 'C');
 dll.insert(dll.length - 1, 'F');
 dll.printAllNodes();
+console.log('Removing first, last and two middle nodes:')
+dll.remove(0);
+dll.remove(dll.length - 1);
+dll.remove(1);
+dll.remove(1);
+dll.printAllNodes();
+
 
 
 export default DoublyLinkedList;
