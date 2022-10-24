@@ -8,19 +8,19 @@ function bubbleSort(array) {
         return null;
     }
     let maxIter = array.length;
-    let swaps = 0;
+    var noSwaps;
     for (let i = 1; i < array.length; i++) {
-        swaps = 0;
+        noSwaps = true;
         for (let j = 1; j < maxIter; j++) {
             if (array[j - 1] > array[j]) {
                 swap(array, j, j - 1);
-                swaps++;
+                noSwaps = false;
             }
         }
         maxIter--;
-        // if (swaps == 0) {
-        //     return array;
-        // }
+        if (noSwaps) { // Optimization; early stoppage
+            break;
+        }
     }
     return array;
 }
@@ -31,10 +31,11 @@ function swap(array, index1, index2) {
     array[index2] = value1;
 }
 
+  
 
 // TODO: Export to test cases
 console.log(bubbleSort([5, 4, 1, 3, 2, 10]));
-maxValue = 100;
+let maxValue = 100;
 console.log(bubbleSort(generateIntArray(5, maxValue)));
 console.log(bubbleSort(generateIntArray(10, maxValue)));
 console.log(bubbleSort(generateIntArray(20, maxValue)));
