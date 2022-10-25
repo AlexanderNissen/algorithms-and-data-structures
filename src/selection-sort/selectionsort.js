@@ -41,11 +41,11 @@ let arr2 = generateIntArray(10, 1000);
 let arr3 = generateIntArray(20, 1000);
 let arr4 = generateIntArray(50, 1000);
 let arr5 = generateIntArray(100, 1000);
-console.log(selectionSort(arr1))
-console.log(selectionSort(arr2))
-console.log(selectionSort(arr3))
-console.log(selectionSort(arr4))
-console.log(selectionSort(arr5))
+console.log(selectionSort(arr1));
+console.log(selectionSort(arr2));
+console.log(selectionSort(arr3));
+console.log(selectionSort(arr4));
+console.log(selectionSort(arr5));
 
 
 
