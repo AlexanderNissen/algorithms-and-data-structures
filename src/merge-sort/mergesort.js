@@ -5,6 +5,23 @@ function mergeSort() {
     
 }
 
+function merge(arr1, arr2) {
+    let result = [];
+    let i = 0;
+    let j = 0;
+    while(i < arr1.length || j < arr2.length) {
+        if (arr1[i] <= arr2[j]) {
+            result.push(arr1[i]);
+            i++;
+        } else {
+            result.push(arr2[j]);
+            j++;
+        }
+    }
+    return result;
+}
+
+
 let arr1 = generateIntArray(5, 1000);
 let arr2 = generateIntArray(10, 1000);
 let arr3 = generateIntArray(20, 1000);
