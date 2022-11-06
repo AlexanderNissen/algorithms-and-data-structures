@@ -1,5 +1,5 @@
-import generateIntArray from "../utils/generateintarray.js";
-import timeThis from "../utils/timethis.js";
+import generateIntArray from '../utils/generateintarray.js';
+import swap from '../utils/swap.js';
 
 // Largest values bubble up to the top
 // Bubble sort: the highest values bubble to the top
@@ -25,13 +25,7 @@ function bubbleSort(array) {
     return array;
 }
 
-function swap(array, index1, index2) {
-    let value1 = array[index1];
-    array[index1] = array[index2];
-    array[index2] = value1;
-}
-
-  
+ 
 
 // TODO: Export to test cases
 console.log(bubbleSort([5, 4, 1, 3, 2, 10]));

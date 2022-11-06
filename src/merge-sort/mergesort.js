@@ -1,5 +1,4 @@
 import generateIntArray from '../utils/generateintarray.js';
-import timeThis from '../utils/timethis.js';
 
 function mergeSort(arr) {
     let [lowerArr, upperArr] = splitInHalf(arr);
@@ -40,6 +39,7 @@ function splitInHalf(arr) {
     let upperArr = arr.slice(halfIndex + 1);
     return [lowerArr, upperArr];
 }
+
 
 // Export to test cases
 let arr1 = generateIntArray(5, 1000);
