@@ -30,7 +30,6 @@ function countDigits(int) {
 }
 
 
-
 // TODO: Export to test cases
 let int1 = 7;
 let int2 = 7756;
