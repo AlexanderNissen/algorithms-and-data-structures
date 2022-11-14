@@ -18,22 +18,40 @@ function radixSort(array) {
     number of digits in the passed int.
     This behavior is useful in radixSort.
 */
-function getDigit(int, position) {
-    return Math.floor(Math.abs(int) / Math.pow(10, position - 1)) % 10;
+function getDigit(int, posFromRight) {
+    return Math.floor(Math.abs(int) / Math.pow(10, posFromRight)) % 10;
 }
 
-function digitCount(int) {
+function countDigits(int) {
     if (int === 0) {
         return 1;
     }
     return Math.floor(Math.log10(Math.abs(int))) + 1;
 }
 
+
+
 // TODO: Export to test cases
-console.log(digitCount(7))
-console.log(digitCount(7756))
-console.log(digitCount(93))
-console.log(digitCount(8054943))
-console.log(digitCount(0))
+let int1 = 7;
+let int2 = 7756;
+let int3 = 0;
+let int4 = 9844213;
+
+console.log('--- getDigit ---');
+console.log(getDigit(int4, 0));
+console.log(getDigit(int4, 1));
+console.log(getDigit(int4, 2));
+console.log(getDigit(int4, 3));
+console.log(getDigit(int4, 4));
+console.log(getDigit(int4, 5));
+console.log(getDigit(int4, 6));
+
+console.log('--- countDigits ---');
+console.log(countDigits(int1));
+console.log(countDigits(int2));
+console.log(countDigits(int3));
+console.log(countDigits(int4));
+
+
 
 export default radixSort;
