@@ -1,4 +1,4 @@
-import generateIntArray from '../utils/generateintarray.js';
+import generateIntArray from '../../utils/generateintarray.js';
 
 function mergeSort(arr) {
     let [lowerArr, upperArr] = splitInHalf(arr);

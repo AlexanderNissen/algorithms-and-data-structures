@@ -1,4 +1,4 @@
-import generateIntArray from "../utils/generateintarray.js";
+import generateIntArray from "../../utils/generateintarray.js";
 
 /*
 In each iteration, first element in current unsorted subarray is pivot

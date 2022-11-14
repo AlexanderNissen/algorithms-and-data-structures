@@ -1,4 +1,4 @@
-import generateIntArray from "../utils/generateintarray.js";
+import generateIntArray from "../../utils/generateintarray.js";
 
 /*
 A sorted subarray is built up, expanding the subarray by one for each iteration.

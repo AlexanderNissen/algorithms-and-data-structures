@@ -1,5 +1,5 @@
-import generateIntArray from '../utils/generateintarray.js';
-import swap from '../utils/swap.js';
+import generateIntArray from '../../utils/generateintarray.js';
+import swap from '../../utils/swap.js';
 
 // Largest values bubble up to the top
 // Bubble sort: the highest values bubble to the top

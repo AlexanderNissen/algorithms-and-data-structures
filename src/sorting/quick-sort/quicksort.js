@@ -1,6 +1,6 @@
-import generateIntArray from '../utils/generateintarray.js';
-import swap from '../utils/swap.js';
-import timeThis from '../utils/timethis.js';
+import generateIntArray from '../../utils/generateintarray.js';
+import swap from '../../utils/swap.js';
+import timeThis from '../../utils/timethis.js';
 
 
 function quickSort(array, left = 0, right = array.length - 1) {
@@ -36,6 +36,7 @@ function partition(array, start = 0, end = array.length - 1) {
 }
 
 
+// TODO: Export to test cases
 let arr1 = generateIntArray(5, 10000);
 let arr2 = generateIntArray(10, 10000);
 let arr3 = generateIntArray(20, 10000);
