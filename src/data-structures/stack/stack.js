@@ -26,6 +26,7 @@ class Stack {
         let oldTop = this.top;
         this.top = oldTop.next;
         oldTop.next = null;
+        this.size--;
         return oldTop.value;
     }
 
