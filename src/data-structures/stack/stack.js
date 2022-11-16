@@ -7,7 +7,7 @@ class Stack {
     
     constructor() {
         this.top = null;
-        this.length = 0;
+        this.size = 0;
     }
 
     push(value) {
@@ -16,7 +16,7 @@ class Stack {
             node.next = this.top;
         }
         this.top = node;
-        this.length++;
+        return ++this.size;
     }
 
     pop() {
@@ -26,7 +26,7 @@ class Stack {
         let oldTop = this.top;
         this.top = oldTop.next;
         oldTop.next = null;
-        return oldTop;
+        return oldTop.value;
     }
 
     printStack() {
