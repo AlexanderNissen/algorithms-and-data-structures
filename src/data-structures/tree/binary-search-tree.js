@@ -35,7 +35,7 @@ class BinarySearchTree {
         }
     }
 
-    find(value) {
+    contains(value) {
         let currentNode = this.root;
         while(currentNode) {
             if (value === currentNode.value) {
@@ -58,13 +58,13 @@ bst.insert(5);
 bst.insert(3);
 bst.insert(2);
 bst.insert(10);
-console.log('Finding 0, 4, 11, 5, and 2:');
-console.log(bst.find(0));
-console.log(bst.find(4));
-console.log(bst.find(11));
-console.log(bst.find(5));
-console.log(bst.find(2));
-console.log(bst.find(10));
+console.log('containsing 0, 4, 11, 5, and 2:');
+console.log(bst.contains(0));
+console.log(bst.contains(4));
+console.log(bst.contains(11));
+console.log(bst.contains(5));
+console.log(bst.contains(2));
+console.log(bst.contains(10));
 
 
 
