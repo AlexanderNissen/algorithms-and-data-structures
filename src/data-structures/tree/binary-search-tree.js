@@ -50,6 +50,9 @@ class BinarySearchTree {
     }
 
     traverseBreadthFirst() {
+        if (!this.root) {
+            return null;
+        }
         let currentNode = this.root;
         let iteratedNodes = [];
         let nodeQueue = [currentNode];
@@ -67,13 +70,21 @@ class BinarySearchTree {
     }
 
     traverseDepthFirstPreorder() {
-        currentNode = this.root;
+        if (!this.root) {
+            return null;
+        }
+        let currentNode = this.root;
+        let iteratedNodes = []
+        if (node) {
+
+        }
+
     }
 }
 
 
 // TODO: Export to test cases
-let bst = new BinarySearchTree();
+let bst = [new BinarySearchTree();
 console.log('Inserting 5, 3, 2, and 10 in given order')
 bst.insert(5);
 bst.insert(3);
