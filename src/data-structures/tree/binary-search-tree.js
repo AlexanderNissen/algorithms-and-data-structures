@@ -73,24 +73,33 @@ class BinarySearchTree {
         if (!this.root) {
             return null;
         }
-        let currentNode = this.root;
         let iteratedNodes = []
-        if (node) {
-
+        function traverse(node) {
+            iteratedNodes.push(node.value);
+            if (node.left) {
+                traverse(node.left);
+            }
+            if (node.right) {
+                traverse(node.right);
+            }
         }
-
+        traverse(this.root);
+        return iteratedNodes;
     }
 }
 
 
 // TODO: Export to test cases
-let bst = [new BinarySearchTree();
+let bst = new BinarySearchTree();
 console.log('Inserting 5, 3, 2, and 10 in given order')
 bst.insert(5);
 bst.insert(3);
 bst.insert(2);
+bst.insert(4);
 bst.insert(10);
-console.log('containsing 0, 4, 11, 5, and 2:');
+bst.insert(8);
+bst.insert(9);
+console.log('Check if BST contains 0, 4, 11, 5, and 2:');
 console.log(bst.contains(0));
 console.log(bst.contains(4));
 console.log(bst.contains(11));
