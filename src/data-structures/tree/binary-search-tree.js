@@ -48,6 +48,27 @@ class BinarySearchTree {
         }
         return false;
     }
+
+    traverseBreadthFirst() {
+        let currentNode = this.root;
+        let iteratedNodes = [];
+        let nodeQueue = [currentNode];
+        while (nodeQueue.length != 0) {
+            currentNode = nodeQueue.shift();
+            iteratedNodes.push(currentNode.value);
+            if (currentNode.left) {
+                nodeQueue.push(currentNode.left);
+            }
+            if (currentNode.right) {
+                nodeQueue.push(currentNode.right);
+            }
+        }
+        return iteratedNodes;
+    }
+
+    traverseDepthFirstPreorder() {
+        currentNode = this.root;
+    }
 }
 
 
@@ -65,6 +86,8 @@ console.log(bst.contains(11));
 console.log(bst.contains(5));
 console.log(bst.contains(2));
 console.log(bst.contains(10));
+console.log("Iterated order, breadth first: " + bst.traverseBreadthFirst());
+console.log("Iterated order, depth-first pre-order: " + bst.traverseDepthFirstPreorder());
 
 
 
