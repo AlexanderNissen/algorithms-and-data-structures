@@ -54,11 +54,11 @@ class BinarySearchTree {
             return null;
         }
         let currentNode = this.root;
-        let iteratedNodes = [];
+        let traversedNodes = [];
         let nodeQueue = [currentNode];
         while (nodeQueue.length != 0) {
             currentNode = nodeQueue.shift();
-            iteratedNodes.push(currentNode.value);
+            traversedNodes.push(currentNode.value);
             if (currentNode.left) {
                 nodeQueue.push(currentNode.left);
             }
@@ -66,16 +66,16 @@ class BinarySearchTree {
                 nodeQueue.push(currentNode.right);
             }
         }
-        return iteratedNodes;
+        return traversedNodes;
     }
 
     traverseDepthFirstPreorder() {
         if (!this.root) {
             return null;
         }
-        let iteratedNodes = []
+        let traversedNodes = []
         function traverse(node) {
-            iteratedNodes.push(node.value);
+            traversedNodes.push(node.value);
             if (node.left) {
                 traverse(node.left);
             }
@@ -84,7 +84,43 @@ class BinarySearchTree {
             }
         }
         traverse(this.root);
-        return iteratedNodes;
+        return traversedNodes;
+    }
+
+    traverseDepthFirstInOrder() {
+        if (!this.root) {
+            return null;
+        }
+        let traversedNodes = [];
+        function traverse(node) {
+            if (node.left) {
+                traverse(node.left);
+            }
+            traversedNodes.push(node.value);
+            if (node.right) {
+                traverse(node.right);
+            }
+        }
+        traverse(this.root);
+        return traversedNodes;
+    }
+
+    traverseDepthFirstPostOrder() {
+        if (!this.root) {
+            return null;
+        }
+        let traversedNodes = [];
+        function traverse(node) {
+            if (node.left) {
+                traverse(node.left);
+            }
+            if (node.right) {
+                traverse(node.right);
+            }
+            traversedNodes.push(node.value);
+        }
+        traverse(this.root);
+        return traversedNodes;
     }
 }
 
@@ -106,8 +142,10 @@ console.log(bst.contains(11));
 console.log(bst.contains(5));
 console.log(bst.contains(2));
 console.log(bst.contains(10));
-console.log("Iterated order, breadth first: " + bst.traverseBreadthFirst());
-console.log("Iterated order, depth-first pre-order: " + bst.traverseDepthFirstPreorder());
+console.log("Traverse order, breadth first: " + bst.traverseBreadthFirst());
+console.log("Traverse order, depth-first pre-order: " + bst.traverseDepthFirstPreorder());
+console.log("Traverse order, depth-first in-order: " + bst.traverseDepthFirstInOrder());
+console.log("Traverse order, depth-first post-order: " + bst.traverseDepthFirstPostOrder());
 
 
 
